@@ -1,0 +1,26 @@
+{
+  "name": "P-Dub-Eh-JATE",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:dev": "nodemon server.js",
+    "build": "",
+    "client": "",
+    "install:prod": "npm install --omit=dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "idb": "^8.0.0",
+    "if-env": "^1.0.4"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "html-webpack-plugin": "^5.6.0",
+    "nodemon": "^2.0.4"
+  }
+}
