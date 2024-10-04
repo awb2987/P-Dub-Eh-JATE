@@ -1,35 +1,24 @@
 const butInstall = document.getElementById('buttonInstall');
-let deferredPrompt;
 
-// Check if the browser supports the PWA installation
-if ('beforeinstallprompt' in window) {
-  // Logic for installing the PWA
-  window.addEventListener('beforeinstallprompt', (event) => {
-    event.preventDefault();
-    deferredPrompt = event;
-    butInstall.style.display = 'block';
-  });
+window.addEventListener('beforeinstallprompt', (event) => {
+  window.deferredPrompt = event;
+  butInstall.classList.toggle('hidden', false);
+});
 
-  // Click event handler for the install button element
-  butInstall.addEventListener('click', async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
+butInstall.addEventListener('click', async () => {
+  const promptEvent = window.deferredPrompt;
 
-      if (outcome === 'accepted') {
-        console.log('User has accepted the A2HS prompt');
-      } else {
-        console.log('User has dismissed the A2HS prompt');
-      }
-      deferredPrompt = null;
-      butInstall.style.display = 'none';
-    }
-  });
+  if (!promptEvent) {
+    return;
+  }
 
-  // Handler for the app installed event
-  window.addEventListener('appinstalled', (event) => {
-    console.log('App has been successfully installed');
-  });
-} else {
-  console.log('PWA installation is not supported in this browser.');
-}
+  promptEvent.prompt();
+
+  window.deferredPrompt = null;
+
+  butInstall.classList.toggle('hidden', true);
+});
+
+window.addEventListener('appinstalled', (event) => {
+  window.deferredPrompt = null;
+});

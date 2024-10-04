@@ -1,4 +1,3 @@
-// Decorative header for the text editor
 const header = `
 /*
        _____  ____________

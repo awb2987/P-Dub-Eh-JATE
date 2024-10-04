@@ -12,35 +12,27 @@ const initdb = async () =>
     },
   });
 
-// ADD content to the database
 export const putDb = async (content) => {
-  try {
-    const db = await openDB('jate', 1);
-    const tx = db.transaction('jate', 'readwrite');
-    const store = tx.objectStore('jate');
-
-    // ADD the content to the store
-    const result = await store.put({ content });
-    console.log('Data saved to the database:', result);
-  } catch (error) {
-    console.error('Error saving data to the database:', error);
-  }
+  console.log('PUT to the database');
+  const jateDb = await openDB('jate', 1);
+  const tx = jateDb.transaction('jate', 'readwrite');
+  const store = tx.objectStore('jate');
+  const request = store.put({ id: 1, value: content });
+  const result = await request;
+  console.log('Data saved to the database', result.value);
 };
 
-// GET all content from the database
 export const getDb = async () => {
-  try {
-    const db = await openDB('jate', 1);
-    const tx = db.transaction('jate', 'readonly');
-    const store = tx.objectStore('jate');
-
-    // RETRIEVE all records from the store
-    const allContent = await store.getAll();
-    console.log('Data retrieved from the database:', allContent);
-    return allContent;
-  } catch (error) {
-    console.error('Error retrieving data from the database:', error);
-  }
+  console.log('GET from the database');
+  const jateDb = await openDB('jate', 1);
+  const tx = jateDb.transaction('jate', 'readonly');
+  const store = tx.objectStore('jate');
+  const request = store.get(1);
+  const result = await request;
+  result
+    ? console.log('Data retrieved from the database', result.value)
+    : console.log('Data not found in the database');
+  return result?.value;
 };
 
 initdb();
