@@ -28,7 +28,7 @@ P-Dub-Eh-JATE is a browser-based text editor that allows users to write and edit
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/P-Dub-Eh-JATE.git
+   git clone https://github.com/awb2987/P-Dub-Eh-JATE.git
    cd P-Dub-Eh-JATE/client
    ```
 2. Install the dependencies:
@@ -39,15 +39,13 @@ P-Dub-Eh-JATE is a browser-based text editor that allows users to write and edit
 ## Usage
 To start the development server, run:
 ```bash
-npm run dev
+npm run start
 ```
-This will launch the application at `http://localhost:8080`.
+This will launch the application at `http://localhost:3000`.
 
 ## Screenshots
-![Screenshot 1](path/to/screenshot1.png)
-![Screenshot 2](path/to/screenshot2.png)
-![Screenshot 3](path/to/screenshot3.png)
+![Screenshot of Landing Page](/public/screenshots/Screenshot-of-landing-page.png)
 
 ## Links
-- [Live Demo](https://your-render-site-url)
-- [GitHub Repository](https://github.com/yourusername/P-Dub-Eh-JATE)
+- [Live Demo](https://p-dub-eh-jate-1.onrender.com/)
+- [GitHub Repository](https://github.com/awb2987/P-Dub-Eh-JATE)
